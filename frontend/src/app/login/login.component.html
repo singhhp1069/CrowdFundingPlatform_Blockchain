@@ -1,0 +1,66 @@
+<div class="panel panel-primary">
+    <div class="panel-heading" align="center">
+    <h3>Account Address</h3>
+    </div>
+      <form>          
+          <div class="form-group">
+            <label>Select the Account Address</label>
+              <select class="form-control" name="sel" [(ngModel)]="accountid"                          (ngModelChange)="onclick($event)">
+               <option *ngIf="!accountid;"></option>
+                  <option *ngFor="let index of account_ids" [ngValue]="index">
+                  {{ index }}
+                </option>
+              </select>
+          </div>
+      </form>
+
+      <div *ngIf="accountid; then submit else selection"></div>
+            <ng-template #submit> 
+                  <button type="button" class="btn btn-success" [routerLink]="['/deploycontract',{address:accountid}]" >Submit</button>
+            </ng-template>
+            <ng-template #selection> 
+                  <button type="button" class="btn btn-success disabled">Select the Account</button>
+            </ng-template>
+
+        <button type="button" class="btn btn-info pull-right" (click) = "getContractDetails(accountid)" >Get Account Info</button>
+  
+<br>
+
+  </div>
+          
+
+
+          <div *ngIf="!isAddress; then alert"></div>
+            <ng-template #alert> 
+                  <div class="alert alert-danger">
+                     <strong>Error!</strong> Please Select the Address from drop down !
+                  </div>
+            </ng-template>
+
+
+
+<div class="col-md" *ngIf="isGetInfo;">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3 align="center">ID : {{contract_details.id}}</h3>
+            <h4>Account Address : {{contract_details.account_address}}</h4>
+            <h4>Project Owener Address : {{contract_details.project_owner_address}}</h4>
+            <h4>Backer Address : {{contract_details.backer_address}}</h4>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="isLoading; then loaded"></div>
+    <ng-template #loaded> <div #login class="loading">Loading&#8230;</div></ng-template>
+
+<router-outlet></router-outlet>
+
+<!-- <form>          
+          <div class="form-group">
+            <label>Select the Account Address</label>
+            <div  *ngFor="let index of account_ids">
+               <a (click)="onclick(index)">{{ index }} </a>
+            </div>            
+          </div>
+      </form> -->

@@ -1,0 +1,13 @@
+<div class="container">
+<h4 align="center">Project Created : {{project_creation_response.Success}}</h4>
+<h4 align="center">Result : {{project_creation_response.Result}}</h4>
+
+<button class="btn btn-success" routerLink="/login">Go Back Home</button>
+</div>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+
+ <div *ngIf="isLoading; then loaded"></div>
+    			<ng-template #loaded> <div #login class="loading">Loading&#8230;</div></ng-template>

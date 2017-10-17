@@ -1,0 +1,26 @@
+<div class="col">
+
+  <div class="col-md-6">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3 align="center">{{layout_info_project}}</h3>
+	        <p>
+		        <a align = "center" href="#" class="btn btn-block btn-primary" role="button" 
+            [routerLink]="['/projectview',{address:address}]">{{layout_button_project}}</a> 
+	        </p>
+      </div>
+    </div>
+  </div>
+
+    <div class="col-md-6">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3 align="center">{{layout_info_backer}}</h3>
+	        <p>
+		        <a align = "center" href="#" class="btn btn-block btn-primary" role="button"
+            [routerLink]="['/backerview',{address:address}]">{{layout_button_backer}}</a> 
+	        </p>
+      </div>
+    </div>
+  </div>
+</div>

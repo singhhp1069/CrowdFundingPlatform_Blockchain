@@ -1,0 +1,50 @@
+<div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                		<h2 align="center">BACKER DETAILS</h2>
+                		<br>
+	  						<h4>{{backer_info.data}}</h4>
+		                	<h4>Contract Balance : {{backer_info.contract_balance}}</h4>
+		                	<h4>Account Balance : {{backer_info.account_balance}}</h4>
+	                		   <div class="well" *ngFor="let index of backer_info.projects">
+	                		   			<h4 align="center">Invested Project Details</h4>
+                                        <h2>{{index.project_status}}</h2>
+	                		   			<p>Project Address : {{index.project_address}}</p>
+	                		   			<p>Project Title : {{index.project_title}}</p>
+	                		   			<p>Project Current Funding : {{index.project_current_funding}}</p>
+	                		   			<p>Project Funding Goal: {{index.project_funding_goal}}</p>
+	                		   </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="well">
+                	<h2 align="center">INVEST IN A NEW PROJECT </h2>
+                	   <div class="well" *ngFor="let index of project_info.projects">
+                                        <h4 align="center">Project Details</h4>
+                                        <p>Project Title : 
+                                        {{index.project_title}}</p>
+                                        <p>Project Address : {{index.project_address}}</p>
+                                        <p>Project Alive : {{index.alive}}</p>
+                                        <p>Project End Date : {{index.project_end_date}}</p>
+                                        <p>Funding Goal : {{index.project_funding_goal}}</p>
+                                        <p>Current Funding : {{index.project_current_funding}}</p>
+                                        <p>Share Token : {{index.project_share_token}}</p>
+                                         <p>Enter Amount to be Invested:</p>           
+                                          <input type="text" class="form-control" id="token"  
+                                                    required [(ngModel)]="invest_amount" name="token">
+                                                    <br>
+                                        <button class="btn btn-success" [routerLink]="['/investproject',{accountid:address,project_address:index.project_address,invest_amount:invest_amount}]" >Invest Project</button>
+                               </div>
+                </div>
+            </div>
+        </div>
+          <div *ngIf="isLoading && isBackerLoading; then loaded"></div>
+    			<ng-template #loaded> <div #login class="loading">Loading&#8230;</div></ng-template>
+
+</div>
+
+
+ 

@@ -1,0 +1,29 @@
+{
+  "name": "blockstarter",
+  "version": "4.0.0",
+  "description": "Node.js app + Postgres on Docker",
+  "author": "GroupV",
+  "main": "src/app.js",
+  "scripts": {
+    "dev": "nodemon src/app.js",
+    "prod": "node src/app.js",
+    "start": "npm run dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
+    "express": "^4.13.3",
+    "pg": "^6.1.5",
+    "sequelize": "^3.30.4",
+	"bignumber": "^1.1.0",
+	"web3": "^0.19.0",
+    "solc": "^0.4.11",
+    "fs": "^0.0.1-security",
+	"cron": "^1.2.1",
+    "cors": "^2.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}

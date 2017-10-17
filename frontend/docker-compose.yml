@@ -1,0 +1,8 @@
+version: '2'
+services:
+  node-app:
+    build: .
+    ports:
+      - "4200:8080"
+    volumes:
+      - .:/frontend

@@ -1,0 +1,70 @@
+<div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                		<h2 align="center">PROJECT DETAILS</h2>
+                		<br>
+	                	<h4>{{project_info.data}}</h4>
+	                	<h4>Contract Balance : {{project_info.contract_balance}}</h4>
+	                	<h4>Account Balance : {{project_info.account_balance}}</h4>
+	                		   <div class="well" *ngFor="let index of project_info.projects">
+	                		   			<h4 align="center">Project Details</h4>
+	                		   			<p>Project Title : 
+	                		   			{{index.project_title}}</p>
+	                		   			<p>Project Address : {{index.project_address}}</p>
+	                		   			<p>Project Alive : {{index.alive}}</p>
+	                		   			<p>Project End Date : {{index.project_end_date}}</p>
+	                		   			<p>Funding Goal : {{index.project_funding_goal}}</p>
+	                		   		    <p>Current Funding : {{index.project_current_funding}}</p>
+	                		   		    <p>Share Token : {{index.project_share_token}}</p>
+	                		   		    <button class="btn btn-danger" [routerLink]="['/deleteproject',{accountid:address,project_address:index.project_address}]" >Delete Project</button>
+	                		   		    <button class="btn btn-warning" [routerLink]="['/widrawproject',{accountid:address,project_address:index.project_address}]" >Widraw Project</button>
+	                		   </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="well">
+                	<h2 align="center">CREATE A NEW PROJECT </h2>
+                	<h4>Project Title : </h4>
+                	<input type="text" class="form-control" id="project_title"  
+		  			required [(ngModel)]="project_title" name="project_title">
+		  			<h4>Project Funding Goal :</h4>
+					  <input type="text" class="form-control" id="funding_goal"  
+					  			required [(ngModel)]="funding_goal" name="funding_goal">
+					  <h4>Project Tokens:</h4>			
+					  <input type="text" class="form-control" id="token"  
+					  			required [(ngModel)]="token" name="token">
+	
+						<div class="col-xs-4">
+							<h4>Select Date :</h4>	
+						    <label for="ex1">YYYY-MM-DD</label>
+						    <input [(ngModel)]="project_end_date" class="form-control" id="ex1" type="text">
+						 </div>
+						
+						<div class="col-xs-4">
+							<h4>Select Time :</h4>
+						    <label for="ex1">HH:MM:SS</label>
+						    <input [(ngModel)]="project_end_time" class="form-control" id="ex1" type="text">
+						 </div>
+					<br>
+					<br>
+					<br>
+					<br>
+
+					<!-- data and time format : 2017-06-29T12:50:00 -->
+		  			<button class="btn btn-success" [routerLink]="['/createnewproject',{accountid:address,project_title:project_title,funding_goal:funding_goal,token:token,project_end_date:project_end_date,project_end_time:project_end_time }]" >Create Project</button>
+
+		  				<br>
+		  				<br>
+		  				
+                </div>
+            </div>
+        </div>
+          <div *ngIf="isLoading; then loaded"></div>
+    			<ng-template #loaded> <div #login class="loading">Loading&#8230;</div></ng-template>
+
+</div>
+
+
+ 

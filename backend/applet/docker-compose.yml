@@ -1,0 +1,20 @@
+version: '2'
+services:
+  node-app:
+    build: app
+    ports:
+      - "4000:8080"
+    volumes:
+      - ./app/src:/myapp/src
+    depends_on:
+      - db
+    environment:
+      - PG_HOST=db
+      - PG_PORT=5432
+      - PG_USER=postgres
+      - PG_DATABASE=app
+      - ETHEREUM_CLIENT_IP=http://192.168.178.22
+      - ETHEREUM_CLIENT_PORT=8545
+
+  db:
+    build: db
